@@ -150,17 +150,174 @@ const firstPost = {
 console.log(newPost(firstPost))
 
 
-const fnWithError = () => {
-    throw new Error('Some error')
+//ARRAYS
+const myArray = [1,2,3]
+console.log(myArray) 
+
+const myArray2 = [1, 2, 3]
+console.log(myArray2)
+
+console.log(myArray === myArray2)
+console.log(myArray[1])
+console.log(myArray.length)
+myArray.push(5)
+console.log(myArray, myArray.length)
+
+const removedElement = myArray.pop()
+console.log(removedElement)
+
+console.log(myArray)
+
+//UNSHIFT
+myArray.unshift('asd')
+console.log(myArray)
+
+//SHIFT
+myArray.shift()
+console.log(myArray)
+
+//FOREACH
+myArray.forEach(el => console.log(el*2))
+console.log(myArray)
+
+//MAP
+
+const myArrayy = [1, 2, 3, 10]
+console.log(myArrayy)
+
+const mapArray = myArrayy.map(el => el*3)
+console.log(mapArray)
+console.log(myArrayy) // array isnt changed 
+
+//DESTRUAL ASSIGMENT
+
+const userProfile = { 
+    name: 'Dima',
+    commetsQty: 17, 
+    hasSignedAgreement: false
+}
+
+const {name, commetsQty} = userProfile
+console.log(name, commetsQty)
+
+//DESTRUAL ARRAY
+
+const defaultArray = ['apple', 'samsung']
+
+const [compOne, compTwo] = defaultArray
+console.log(compTwo)
+
+
+//DESTRUAL IN FUNCTION
+
+const userInfo = ({name, commetsQty}) => {
+    if (!commetsQty){
+        return `User ${name} has no comments`
+    }
+    else{
+        return `User ${name} has ${commetsQty} comments`
+    }
+}
+
+const ans = userInfo(userProfile)
+console.log(ans)
+
+//SWITCH
+
+const month = 2
+
+switch (month) {
+    case 12:
+        console.log('December')
+        break
+    case 1:
+        console.log('January')
+        break
+    case 2:
+        console.log('February')
+        break
+    default: 
+        console.log('Isnt winter month')
+}
+
+//TERNARY OPERATOR
+
+const value = 11
+value
+    ? console.log('elleven')
+    : console.log('isnt elleven')
+
+
+const value1 = 11
+const value2 = 25
+value1 && value2
+    ?console.log('True')
+    :console.log('False')
+
+
+let value3 = -5
+console.log(value3 >= 0 ?value :value3-3)
+
+const res = value3 >= 0 ?value3 :value3-3
+console.log(res)
+
+/*Cycles
+for
+*/
+for (let i = 0; i < 3; i++){
+    console.log(`${i} element`)
+}
+
+/*while 
+while (condition){
+    stuff
+}
+
+//Do while
+do {
+    stuff
+} while (condition)
+
+//For in for objects
+for (key in object){
+    stuff
+}
+*/
+const myObject = {
+    x: 10,
+    y: true,
+    z: 'abc'
+}
+
+for (const key in myObject){
+    console.log(key, myObject[key])
+}
+
+//FOREACH for objects
+Object.keys(myObject).forEach(key => {
+    console.log(key, myObject[key])
+})
+
+//OBJECTS TO ARRAY
+//Object.values(create array and save values of variable)
+//Object.keys(crate array and save name of variable (and values of variable))
+
+//FOR OF not for a objects
+const myString = 'Hey'
+for(const letter of myString){
+    console.log(letter)
 }
 
 
-try {
-    fnWithError()
-} catch (error) {
-    console.error(error)
-    console.log(error.massage)
+//EXPORT IMPORT
+/*
+//First file
+const myNameFn = () => {
+    console.log('Dima')
 }
-fnWithError()
+export default myNameFn
 
-console.log('continue...')
+//Second file
+import printMyName from 'adres'
+printMyName()
+*/
