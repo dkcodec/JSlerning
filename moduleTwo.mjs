@@ -1,2 +1,6 @@
-import printSumma from './moduleOne.mjs'
-printSumma(5, 8)
+import {
+    summa,
+    mult as mt
+} from './moduleOne.mjs'
+
+console.log(summa(15, mt(2, 5)))

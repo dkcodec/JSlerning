@@ -321,3 +321,27 @@ export default myNameFn
 import printMyName from 'adres'
 printMyName()
 */
+
+//CLASS
+
+class Comment {
+    constructor(text) {
+        this.text = text
+        this.votesQty = 0
+    }
+
+    upvote() {
+        this.votesQty += 1
+    }
+}
+
+//Create new instans
+
+const firstComment = new Comment ('first comment')
+
+console.log(firstComment)
+
+console.log(firstComment instanceof Comment)
+
+firstComment.upvote()
+console.log(firstComment)
