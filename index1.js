@@ -324,6 +324,32 @@ printMyName()
 
 //CLASS
 
+// class Comment {
+//     constructor(text) {
+//         this.text = text
+//         this.votesQty = 0
+//     }
+
+//     upvote() {
+//         this.votesQty += 1
+//     }
+// }
+
+// //Create new instans
+
+// const firstComment = new Comment ('first comment')
+
+// console.log(firstComment)
+
+// console.log(firstComment instanceof Comment)
+
+// firstComment.upvote()
+// console.log(firstComment)
+
+// console.log(firstComment.hasOwnProperty('text'))
+
+//STATIC METHOD
+
 class Comment {
     constructor(text) {
         this.text = text
@@ -333,15 +359,86 @@ class Comment {
     upvote() {
         this.votesQty += 1
     }
+
+    static mergeComments (first, second) {
+        return `${first} ${second}`
+    }
 }
 
-//Create new instans
+const myComment = new Comment ('Awesome comment')
+const mySecondComment = new Comment('the same comment')
 
-const firstComment = new Comment ('first comment')
+console.log(Comment.mergeComments( 'First comment', 'Second comment'))
 
-console.log(firstComment)
+//EXTEND CLASS
 
-console.log(firstComment instanceof Comment)
+class NumbersArray extends Array {
+    sum () {
+        return this.reduce((el, acc) => acc += el, 0) 
+    }
+}
 
-firstComment.upvote()
-console.log(firstComment)
+const methodArray = new NumbersArray (2, 5 ,8)
+
+console.log(methodArray.sum())
+
+//Promises
+
+
+// fetch('https://jsonplaceholder.typicode.com/todos')
+//     .then(response  => response.json())
+//     .then(json => console.log(json))
+//     .catch(error => console.error(error.message))
+
+
+const getDate = url => 
+    new Promise((resolve, reject) => 
+    fetch(url)
+        .then(response => response.json())
+        .then(json => resolve(json))
+        .catch(error => reject(error))
+    )
+// getDate('https://jsonplaceholder.typicode.com/todos')
+//     .then(date => console.log(date))
+//     .catch(error => console.log(error.message))
+
+//Async / Awiat
+
+const asyncFn = async () => {
+    throw new Error ('There was an error!')
+}
+asyncFn()
+    .then(value => console.log(value))
+    .catch(error => console.log(error.message))
+
+const timerPromise = () => {
+    new Promise ((resolve, reject) => 
+    setTimeout(() => resolve, 2000))
+}
+
+const asyncFunction = async () => {
+    console.log('Timer start!')
+    const startTime = performance.now()
+    await timerPromise()
+    const endTime = performance.now()
+    console.log('Timer ended!', endTime - startTime)
+}
+
+asyncFunction()
+
+
+const getDate1 = async (url) => {
+    const res = await fetch(url)
+    const json = await res.json()
+    return json
+}
+
+const url = 'https://jsonplaceholder.typicode.com/todos'
+
+try{
+    const date = await getDate1(url)
+    console.log(date)
+}
+catch (error) {
+    console.log(error.message)
+}
