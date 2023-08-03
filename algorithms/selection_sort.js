@@ -17,5 +17,5 @@ function selectionSort (array) {
     return array;
 }
 
-console.log(selectionSort(arr));
+console.log(selectionSort(arr));// O(n*n)
 console.log(count);
